@@ -101,8 +101,8 @@ None identified.
 - Oversubscription criteria and catchment information provided
 
 **Evidence Files**:
-- [01-admission-arrangements.gif](beatrix-potter-evidence/01-admission-arrangements/01-admission-arrangements.gif)
-- [Beatrix_Potter_Admissions_Policy_2024-25.pdf](beatrix-potter-evidence/01-admission-arrangements/Beatrix_Potter_Admissions_Policy_2024-25.pdf)
+- [01-admission-arrangements.gif](beatrix-potter/beatrix-potter-evidence/01-admission-arrangements/01-admission-arrangements.gif)
+- [Beatrix_Potter_Admissions_Policy_2024-25.pdf](beatrix-potter/beatrix-potter-evidence/01-admission-arrangements/Beatrix_Potter_Admissions_Policy_2024-25.pdf)
 
 **Gap**: None identified
 
@@ -120,8 +120,8 @@ None identified.
 - Policy covers expectations, rewards, sanctions, and procedures
 
 **Evidence Files**:
-- [02-behaviour-policy.gif](beatrix-potter-evidence/02-behaviour-policy/02-behaviour-policy.gif)
-- [Behaviour_Policy.pdf](beatrix-potter-evidence/02-behaviour-policy/Behaviour_Policy.pdf)
+- [02-behaviour-policy.gif](beatrix-potter/beatrix-potter-evidence/02-behaviour-policy/02-behaviour-policy.gif)
+- [Behaviour_Policy.pdf](beatrix-potter/beatrix-potter-evidence/02-behaviour-policy/Behaviour_Policy.pdf)
 
 **Gap**: None identified
 
@@ -138,8 +138,8 @@ None identified.
 - Document covers chargeable activities and remission arrangements
 
 **Evidence Files**:
-- [04-05-policies-page.gif](beatrix-potter-evidence/04-charging-remissions/04-05-policies-page.gif)
-- [Charging_and_Remissions.doc](beatrix-potter-evidence/04-charging-remissions/Charging_and_Remissions.doc)
+- [04-05-policies-page.gif](beatrix-potter/beatrix-potter-evidence/04-charging-remissions/04-05-policies-page.gif)
+- [Charging_and_Remissions.doc](beatrix-potter/beatrix-potter-evidence/04-charging-remissions/Charging_and_Remissions.doc)
 
 **Gap**: None identified
 
@@ -156,7 +156,7 @@ None identified.
 - Clear procedure for raising and escalating complaints
 
 **Evidence Files**:
-- [BP_Complaints_Policy_Procedure.pdf](beatrix-potter-evidence/05-complaints-policy/BP_Complaints_Policy_Procedure.pdf)
+- [BP_Complaints_Policy_Procedure.pdf](beatrix-potter/beatrix-potter-evidence/05-complaints-policy/BP_Complaints_Policy_Procedure.pdf)
 
 **Gap**: None identified
 
@@ -173,7 +173,7 @@ None identified.
 - SENCo identified as Mrs Lynn Jones with contact email senco@beatrixpotterschool.com on the SEND page
 
 **Evidence Files**:
-- [06-contact-details.gif](beatrix-potter-evidence/06-contact-details/06-contact-details.gif)
+- [06-contact-details.gif](beatrix-potter/beatrix-potter-evidence/06-contact-details/06-contact-details.gif)
 
 **Gap**: None identified
 
@@ -192,7 +192,7 @@ None identified.
 - RE curriculum information included
 
 **Evidence Files**:
-- [07-curriculum.gif](beatrix-potter-evidence/07-curriculum/07-curriculum.gif)
+- [07-curriculum.gif](beatrix-potter/beatrix-potter-evidence/07-curriculum/07-curriculum.gif)
 
 **Gap**: None identified
 
@@ -209,8 +209,8 @@ None identified.
 - Document is marked as "Current"
 
 **Evidence Files**:
-- [08-equality-objectives.gif](beatrix-potter-evidence/08-equality-objectives/08-equality-objectives.gif)
-- [Equality_Information_Objectives_Current.docx](beatrix-potter-evidence/08-equality-objectives/Equality_Information_Objectives_Current.docx)
+- [08-equality-objectives.gif](beatrix-potter/beatrix-potter-evidence/08-equality-objectives/08-equality-objectives.gif)
+- [Equality_Information_Objectives_Current.docx](beatrix-potter/beatrix-potter-evidence/08-equality-objectives/Equality_Information_Objectives_Current.docx)
 
 **Gap**: None identified
 
@@ -228,7 +228,7 @@ None identified.
 - School ethos prominently displayed
 
 **Evidence Files**:
-- [09-ethos-values.gif](beatrix-potter-evidence/09-ethos-values/09-ethos-values.gif)
+- [09-ethos-values.gif](beatrix-potter/beatrix-potter-evidence/09-ethos-values/09-ethos-values.gif)
 
 **Gap**: None identified
 
@@ -247,7 +247,7 @@ None identified.
 - Links to GIAS Governors information, Governor Profiles, and Structure/Responsibility/Attendance document
 
 **Evidence Files**:
-- [10-governance.gif](beatrix-potter-evidence/10-governance/10-governance.gif)
+- [10-governance.gif](beatrix-potter/beatrix-potter-evidence/10-governance/10-governance.gif)
 
 **Gap**: None identified
 
@@ -266,7 +266,7 @@ None identified.
 - Full report available for download on Ofsted website
 
 **Evidence Files**:
-- [11-ofsted-reports.gif](beatrix-potter-evidence/11-ofsted-reports/11-ofsted-reports.gif)
+- [11-ofsted-reports.gif](beatrix-potter/beatrix-potter-evidence/11-ofsted-reports/11-ofsted-reports.gif)
 
 **Gap**: None identified
 
@@ -283,8 +283,8 @@ None identified.
 - Document covers funding, spending, and impact
 
 **Evidence Files**:
-- [13-14-16-policies-page.gif](beatrix-potter-evidence/13-pe-sport-premium/13-14-16-policies-page.gif)
-- [Sports_Premium_Grant_2024_2025.pdf](beatrix-potter-evidence/13-pe-sport-premium/Sports_Premium_Grant_2024_2025.pdf)
+- [13-14-16-policies-page.gif](beatrix-potter/beatrix-potter-evidence/13-pe-sport-premium/13-14-16-policies-page.gif)
+- [Sports_Premium_Grant_2024_2025.pdf](beatrix-potter/beatrix-potter-evidence/13-pe-sport-premium/Sports_Premium_Grant_2024_2025.pdf)
 
 **Gap**: None identified
 
@@ -301,8 +301,8 @@ None identified.
 - Document covers strategy, spending allocation, and outcomes
 
 **Evidence Files**:
-- [13-14-16-policies-page.gif](beatrix-potter-evidence/14-pupil-premium/13-14-16-policies-page.gif)
-- [Pupil_premium_strategy_statement.docx](beatrix-potter-evidence/14-pupil-premium/Pupil_premium_strategy_statement.docx)
+- [13-14-16-policies-page.gif](beatrix-potter/beatrix-potter-evidence/14-pupil-premium/13-14-16-policies-page.gif)
+- [Pupil_premium_strategy_statement.docx](beatrix-potter/beatrix-potter-evidence/14-pupil-premium/Pupil_premium_strategy_statement.docx)
 
 **Gap**: None identified
 
@@ -319,7 +319,7 @@ None identified.
 - Clear uniform requirements listed
 
 **Evidence Files**:
-- [15-18-key-info-pages.gif](beatrix-potter-evidence/15-school-uniform/15-18-key-info-pages.gif)
+- [15-18-key-info-pages.gif](beatrix-potter/beatrix-potter-evidence/15-school-uniform/15-18-key-info-pages.gif)
 
 **Gap**: None identified
 
@@ -338,9 +338,9 @@ None identified.
 - SENCo contact details provided (Mrs Lynn Jones)
 
 **Evidence Files**:
-- [13-14-16-policies-page.gif](beatrix-potter-evidence/16-send-information/13-14-16-policies-page.gif)
-- [SEN_Policy_2023_2024.pdf](beatrix-potter-evidence/16-send-information/SEN_Policy_2023_2024.pdf)
-- [SEND_Information_and_Offer.pdf](beatrix-potter-evidence/16-send-information/SEND_Information_and_Offer.pdf)
+- [13-14-16-policies-page.gif](beatrix-potter/beatrix-potter-evidence/16-send-information/13-14-16-policies-page.gif)
+- [SEN_Policy_2023_2024.pdf](beatrix-potter/beatrix-potter-evidence/16-send-information/SEN_Policy_2023_2024.pdf)
+- [SEND_Information_and_Offer.pdf](beatrix-potter/beatrix-potter-evidence/16-send-information/SEND_Information_and_Offer.pdf)
 
 **Gap**: None identified
 
@@ -363,7 +363,7 @@ None identified.
 - National and LA comparisons provided
 
 **Evidence Files**:
-- [17-results.gif](beatrix-potter-evidence/17-results/17-results.gif)
+- [17-results.gif](beatrix-potter/beatrix-potter-evidence/17-results/17-results.gif)
 
 **Gap**: None identified
 
@@ -380,7 +380,7 @@ None identified.
 - Academic year dates published
 
 **Evidence Files**:
-- [15-18-key-info-pages.gif](beatrix-potter-evidence/18-term-holiday-dates/15-18-key-info-pages.gif)
+- [15-18-key-info-pages.gif](beatrix-potter/beatrix-potter-evidence/18-term-holiday-dates/15-18-key-info-pages.gif)
 
 **Gap**: None identified
 
@@ -398,7 +398,7 @@ None identified.
 - No statement regarding employees earning over £100,000 (even if none)
 
 **Evidence Files**:
-- [19-salary-statement-search.gif](beatrix-potter-evidence/19-salary-statement/19-salary-statement-search.gif)
+- [19-salary-statement-search.gif](beatrix-potter/beatrix-potter-evidence/19-salary-statement/19-salary-statement-search.gif)
 
 **Gap**: The school must publish a statement about employees earning over £100,000. Even if no employees earn this amount, it must be explicitly stated (e.g., "No employees at this school have a gross annual salary of £100,000 or more").
 
@@ -415,7 +415,7 @@ None identified.
 - Direct link to "Beatrix Potter Benchmarking" on the government service
 
 **Evidence Files**:
-- [20-financial-benchmarking.gif](beatrix-potter-evidence/20-financial-benchmarking/20-financial-benchmarking.gif)
+- [20-financial-benchmarking.gif](beatrix-potter/beatrix-potter-evidence/20-financial-benchmarking/20-financial-benchmarking.gif)
 
 **Gap**: None identified
 
