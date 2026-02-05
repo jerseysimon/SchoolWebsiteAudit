@@ -2,6 +2,9 @@
 
 Automated compliance auditing of UK maintained school websites against DfE statutory publication requirements, powered by Claude Code skills and Chrome browser automation.
 
+**DISCLAIMER** 
+I have created these skills as a layman interpreting the relevant DfE guidance. I am not a lawyer. Please ensure you review the output of the tool, its evidence and come to your own conclusions. As always, AI can make mistakes…
+ 
 ## How It Works
 
 This project uses two **Claude Code skills** that work together:
@@ -54,7 +57,7 @@ To regenerate:
 /criteria-generator
 ```
 
-This reads the gov.uk page and produces `setup/assessment-approach.md` with all 20 criteria, applicability rules, and evidence guidance.
+This reads the gov.uk page and produces `setup/assessment-approach.md` with all criteria, applicability rules, and evidence guidance.
 
 ### Step 2: Run the School Assessment
 
@@ -146,14 +149,7 @@ The generated markdown report includes:
 - **Detailed findings** per criterion with evidence descriptions, file links, and identified gaps
 - **Evidence index** mapping folders to criteria with file counts
 
-## Example: Beatrix Potter School
-
-The `beatrix-potter/` folder contains a completed assessment. Key findings from the February 2026 assessment:
-
-- **14 of 18** applicable criteria fully met
-- **4 partially met**: missing RE withdrawal info (curriculum), no salary disclosure statement (financial), no link to compare school performance service (results), weekly hours total not stated (school times)
-- **0 not met**
-- Notable issues: empty Statutory Policies navigation page, Chair of Governors name inconsistency between pages
+The `beatrix-potter/` folder contains a completed assessment. 
 
 ## Assessing a Different School
 
