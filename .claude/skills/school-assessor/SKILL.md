@@ -79,44 +79,56 @@ For each of the 20 criteria in assessment-approach.md:
 
    **This step is MANDATORY - do not skip it!**
 
-   Use the Chrome MCP tools to capture and save evidence:
+   Use the Chrome MCP tools to capture **static screenshot GIFs** as evidence. Only capture pages that directly show evidence for the criterion being assessed - do NOT capture intermediate navigation pages, menus, or pages you pass through to reach the evidence.
 
-   a) **Start GIF recording for the criterion:**
+   **Per-criterion evidence capture workflow:**
+
+   a) **Navigate to the page containing the evidence:**
+      ```
+      mcp__claude-in-chrome__navigate: url="{evidence-page-url}", tabId={tabId}
+      ```
+
+   b) **Wait for page to load:**
+      ```
+      mcp__claude-in-chrome__computer: action=wait, duration=2, tabId={tabId}
+      ```
+
+   c) **Start GIF recording (single frame capture):**
       ```
       mcp__claude-in-chrome__gif_creator: action=start_recording, tabId={tabId}
       ```
 
-   b) **Take screenshot to capture current state:**
+   d) **Take ONE screenshot of the relevant content:**
       ```
       mcp__claude-in-chrome__computer: action=screenshot, tabId={tabId}
       ```
 
-   c) **Navigate and scroll through relevant content, taking screenshots at each key point**
-
-   d) **Stop GIF recording:**
+   e) **Stop recording immediately (single frame = static image):**
       ```
       mcp__claude-in-chrome__gif_creator: action=stop_recording, tabId={tabId}
       ```
 
-   e) **Export GIF to Downloads folder:**
+   f) **Export as static GIF:**
       ```
-      mcp__claude-in-chrome__gif_creator: action=export, tabId={tabId}, download=true, filename="{criterion-number}-{criterion-name}.gif"
+      mcp__claude-in-chrome__gif_creator: action=export, tabId={tabId}, download=true, filename="{criterion-number}-{descriptive-name}.gif"
       ```
 
-   f) **Move the downloaded GIF to evidence folder:**
+   g) **Move the downloaded GIF to evidence folder:**
       ```bash
-      mv ~/Downloads/{criterion-number}-{criterion-name}.gif "{school}-evidence/{criterion-folder}/"
+      mv ~/Downloads/{criterion-number}-{descriptive-name}.gif "{school}-evidence/{criterion-folder}/"
       ```
 
-   g) **If there are downloadable documents, get the URL and download them:**
+   h) **If there are downloadable documents, get the URL and download them:**
       ```bash
       curl -L -o "{school}-evidence/{criterion-folder}/{document-name}.pdf" "{document-url}"
       ```
 
-   h) **Verify the files were saved:**
+   i) **Verify the files were saved:**
       ```bash
       ls -la "{school}-evidence/{criterion-folder}/"
       ```
+
+   **If a page requires scrolling**, capture multiple static GIFs of different sections rather than one animated recording. Each GIF should show a specific piece of evidence with a descriptive filename (e.g., `17-ks2-results.gif`, `17-eyfs-results.gif`).
 
    **Do NOT proceed to step 4 until evidence files are confirmed saved!**
 
@@ -132,62 +144,98 @@ For each of the 20 criteria in assessment-approach.md:
    - Reference the ACTUAL evidence files that were saved in step 3
    - Include relative paths to evidence files in the report
 
-### 3. Evidence Capture Guidelines
+### 3. Broken Link Detection
+
+**CRITICAL: Monitor for broken links throughout the entire assessment.**
+
+While navigating the website for any reason, watch for pages that indicate a broken or dead link. This includes:
+
+- HTTP error codes displayed on the page (e.g., 404, 403, 500, 502, 503)
+- Pages containing text such as: "page not found", "sorry", "link broken", "no longer available", "this page doesn't exist", "error", "not found", "moved or deleted", "expired"
+- Pages that load but show only a generic error template
+- Links that redirect to an unexpected page (e.g., back to the homepage)
+
+**When a broken link is detected:**
+1. Note the URL that was requested
+2. Note where the link was found (which page linked to it)
+3. Note the error message or HTTP code displayed
+4. Capture a static GIF of the error page as evidence
+5. Save to `{school}-evidence/broken-links/`
+
+**These must be reported regardless of whether they relate to any assessment criterion.** They are reported in a dedicated section of the compliance report (see Output Format below).
+
+### 4. Evidence Capture Guidelines
 
 **CRITICAL: Use Chrome MCP Tools to Save Evidence Files**
 
-The Chrome MCP provides tools for capturing and saving evidence. Screenshots taken with the `computer` tool are displayed but NOT automatically saved to files. You MUST use the GIF creator to save visual evidence.
+The Chrome MCP provides tools for capturing and saving evidence. Screenshots taken with the `computer` tool are displayed but NOT automatically saved to files. You MUST use the GIF creator to save visual evidence as **static (single-frame) GIFs**.
 
-**Primary Method: GIF Recording (Recommended)**
+**What to Capture (DO):**
+- The specific page or section that contains evidence for the criterion
+- Downloaded policy documents (PDF/DOC/DOCX)
+- External link destination pages (e.g., Ofsted report page)
+- Error pages encountered (for broken link reporting)
 
-For each criterion, use the Chrome MCP GIF creator to record and save evidence:
+**What NOT to Capture:**
+- Navigation menus or dropdowns used to find pages
+- Intermediate pages you click through to reach evidence
+- The homepage (unless it contains specific evidence)
+- Pages unrelated to the current criterion
+
+**Static GIF Capture Method:**
+
+For each evidence screenshot, use this compact workflow:
 
 ```
-# 1. Start recording before navigating to evidence pages
+# 1. Navigate to evidence page
+mcp__claude-in-chrome__navigate:
+  url: "{evidence-page-url}"
+  tabId: {tabId}
+
+# 2. Wait for load
+mcp__claude-in-chrome__computer:
+  action: wait
+  duration: 2
+  tabId: {tabId}
+
+# 3. Start recording
 mcp__claude-in-chrome__gif_creator:
   action: start_recording
-  tabId: {your-tab-id}
+  tabId: {tabId}
 
-# 2. Take a screenshot to capture the initial frame
+# 4. Take ONE screenshot
 mcp__claude-in-chrome__computer:
   action: screenshot
-  tabId: {your-tab-id}
+  tabId: {tabId}
 
-# 3. Navigate, scroll, and screenshot key content
-#    (Each screenshot action captures a frame)
-
-# 4. Stop recording
+# 5. Stop recording immediately
 mcp__claude-in-chrome__gif_creator:
   action: stop_recording
-  tabId: {your-tab-id}
+  tabId: {tabId}
 
-# 5. Export to Downloads folder with descriptive filename
+# 6. Export static GIF
 mcp__claude-in-chrome__gif_creator:
   action: export
-  tabId: {your-tab-id}
+  tabId: {tabId}
   download: true
-  filename: "01-admission-arrangements.gif"
+  filename: "{criterion-number}-{descriptive-name}.gif"
 
-# 6. Move to evidence folder using Bash
-mv ~/Downloads/01-admission-arrangements.gif beatrix-potter-evidence/01-admission-arrangements/
+# 7. Move to evidence folder
+mv ~/Downloads/{criterion-number}-{descriptive-name}.gif {school}-evidence/{criterion-folder}/
 ```
 
-**Alternative: Individual Screenshots with System Capture**
+**For pages with long content requiring multiple captures:**
 
-If GIF recording is not suitable, use macOS screencapture while Chrome window is visible:
+Scroll to each relevant section separately and capture individual static GIFs with descriptive names:
+- `07-curriculum-overview.gif` (top of curriculum page)
+- `07-phonics-scheme.gif` (scrolled to phonics section)
+- `07-re-withdrawal.gif` (scrolled to RE section)
 
-```bash
-# Ensure Chrome window is in focus and visible, then:
-screencapture -w "{school}-evidence/{criterion-folder}/{filename}.png"
-# The -w flag lets you click on the Chrome window to capture it
-```
-
-**Downloading Policy Documents**
+**Downloading Policy Documents:**
 
 For linked PDF/DOC files, extract the URL and download:
 
 ```bash
-# Get document URL from the page, then download
 curl -L -o "{school}-evidence/{criterion-folder}/{document-name}.pdf" "{document-url}"
 ```
 
@@ -197,65 +245,37 @@ ls -la "{school}-evidence/{criterion-folder}/"
 # Must show at least one file before proceeding
 ```
 
-**Workflow for Each Criterion:**
-
-```
-For criterion X:
-1. Navigate to relevant page(s)
-2. Wait for page to load
-3. Take screenshot (computer tool, action: screenshot)
-4. Save screenshot to file:
-   - Use Bash: screencapture or similar tool
-   - Filename: {criterion-folder}/{descriptive-name}.png
-5. Verify file exists in evidence folder
-6. Record evidence in findings
-7. Move to next page/criterion
-```
-
 **Screenshot best practices:**
-- Capture full page or relevant section clearly showing the required information
-- Include the URL bar where possible to prove the source
-- Save screenshots to the criterion's subfolder IMMEDIATELY after capture
-- Use descriptive filenames: `{description}.png` (e.g., `policy-page.png`, `la-application-link.png`)
+- Only capture pages that directly show evidence for the criterion
+- Use descriptive filenames that indicate what the image shows (e.g., `06-senco-details.gif`, not `06-screenshot-3.gif`)
 - VERIFY each file exists before moving to the next criterion
 
-**Document downloads:**
-- When a policy document link is found, download it explicitly:
-  ```bash
-  curl -L -o "{evidence-folder}/{criterion-folder}/{filename}.pdf" "{document-url}"
-  ```
-- Save linked PDFs/documents to the criterion's subfolder
-- Keep original document names or use descriptive names
-- Verify the download completed successfully
-
 **For external links (e.g., Ofsted, LA website):**
-- Screenshot the page showing the link exists
-- Navigate to the external link and screenshot the destination page
-- Save BOTH screenshots to prove the link works
+- Capture a static GIF of the external destination page
 - Note in findings that compliance is via external link
 
 **Example evidence folder structure:**
 ```
 beatrix-potter-evidence/
 ├── 01-admission-arrangements/
-│   ├── admissions-page.png
-│   ├── oversubscription-criteria.png
-│   ├── la-application-link.png
+│   ├── 01-admissions-page.gif
+│   ├── 01-oversubscription-criteria.gif
 │   └── Beatrix-Potter-Admissions-Policy.pdf
 ├── 02-behaviour-policy/
-│   ├── policies-page-behaviour.png
-│   ├── Behaviour-Policy.pdf
-│   └── Behaviour-Principles.pdf
+│   ├── 02-behaviour-policy-link.gif
+│   └── Behaviour-Policy.pdf
 ├── 06-contact-details/
-│   ├── contact-us-page.png
-│   └── senco-details.png
+│   ├── 06-footer-contact.gif
+│   └── 06-senco-details.gif
 ├── 07-curriculum/
-│   ├── curriculum-overview.png
-│   ├── phonics-scheme.png
-│   └── ks1-curriculum.png
+│   ├── 07-curriculum-overview.gif
+│   ├── 07-phonics-scheme.gif
+│   └── 07-re-withdrawal.gif
 ├── 11-ofsted-reports/
-│   ├── ofsted-link.png
-│   └── ofsted-report-page.png
+│   └── 11-ofsted-report-page.gif
+├── broken-links/
+│   ├── broken-pe-sport-premium-404.gif
+│   └── broken-old-newsletter-link.gif
 └── ...
 ```
 
@@ -325,6 +345,19 @@ The following criteria do not apply to this school:
 
 ---
 
+## Broken Links
+
+During the assessment, the following broken or problematic links were identified on the school website. These are reported regardless of whether they relate to a specific compliance criterion.
+
+| Link URL | Linked From | Error | Evidence |
+|----------|-------------|-------|----------|
+| [URL that was broken] | [Page where the link was found] | [e.g., 404 Not Found] | [broken-link-evidence.gif](evidence-path) |
+| ... | ... | ... | ... |
+
+*If no broken links were found, state: "No broken links were identified during this assessment."*
+
+---
+
 ## Recommendations
 
 [List any actions needed to achieve full compliance, prioritised by:]
@@ -337,6 +370,9 @@ The following criteria do not apply to this school:
 
 ### Priority 3: Recommended improvements
 [List any recommended (non-mandatory) items to improve]
+
+### Broken Links to Fix
+[List any broken links found, with the source page and suggested fix]
 
 ---
 
@@ -353,27 +389,8 @@ The following criteria do not apply to this school:
 - [Location on website]
 
 **Evidence Files**:
-- [admissions-page.png](beatrix-potter-evidence/01-admission-arrangements/admissions-page.png)
-- [oversubscription-criteria.png](beatrix-potter-evidence/01-admission-arrangements/oversubscription-criteria.png)
-- [Beatrix-Potter-Admissions-Policy.pdf](beatrix-potter-evidence/01-admission-arrangements/Beatrix-Potter-Admissions-Policy.pdf)
-
-**Gap**: [Description of any missing items, or "None identified"]
-
----
-
-### 2. Behaviour Policy
-
-**Status**: [Met / Partially Met / Not Met]
-
-**Requirement**: [Brief summary of what must be published]
-
-**Evidence**:
-- [Description of what was found]
-- [Location on website]
-
-**Evidence Files**:
-- [policies-page-behaviour.png](beatrix-potter-evidence/02-behaviour-policy/policies-page-behaviour.png)
-- [Behaviour-Policy.pdf](beatrix-potter-evidence/02-behaviour-policy/Behaviour-Policy.pdf)
+- [01-admissions-page.gif](evidence/01-admission-arrangements/01-admissions-page.gif)
+- [Admissions-Policy.pdf](evidence/01-admission-arrangements/Admissions-Policy.pdf)
 
 **Gap**: [Description of any missing items, or "None identified"]
 
@@ -391,6 +408,7 @@ All evidence files are organised in criterion-specific subfolders:
 |--------|-----------|-------|
 | `01-admission-arrangements/` | #1 Admission Arrangements | 3 files |
 | `02-behaviour-policy/` | #2 Behaviour Policy | 2 files |
+| `broken-links/` | Broken Links | X files |
 | ... | ... | ... |
 
 Total evidence files: [X]
@@ -417,71 +435,11 @@ Total evidence files: [X]
 - Broken links to external services
 - SENCo contact details missing from mainstream schools
 
-**Working with Chrome MCP - Evidence Capture Workflow:**
-
-The Chrome MCP tools are prefixed with `mcp__claude-in-chrome__`. Use them as follows:
-
-**Per-Criterion Evidence Workflow:**
-
-```
-# 1. START GIF RECORDING for this criterion
-mcp__claude-in-chrome__gif_creator:
-  action: start_recording
-  tabId: {tabId}
-
-# 2. NAVIGATE to the relevant page
-mcp__claude-in-chrome__navigate:
-  url: "{page-url}"
-  tabId: {tabId}
-
-# 3. WAIT for page to load
-mcp__claude-in-chrome__computer:
-  action: wait
-  duration: 2
-  tabId: {tabId}
-
-# 4. SCREENSHOT to capture frame (and view content)
-mcp__claude-in-chrome__computer:
-  action: screenshot
-  tabId: {tabId}
-
-# 5. SCROLL and SCREENSHOT if more content exists
-mcp__claude-in-chrome__computer:
-  action: scroll
-  scroll_direction: down
-  scroll_amount: 3
-  tabId: {tabId}
-
-mcp__claude-in-chrome__computer:
-  action: screenshot
-  tabId: {tabId}
-
-# 6. STOP GIF RECORDING
-mcp__claude-in-chrome__gif_creator:
-  action: stop_recording
-  tabId: {tabId}
-
-# 7. EXPORT GIF to Downloads
-mcp__claude-in-chrome__gif_creator:
-  action: export
-  tabId: {tabId}
-  download: true
-  filename: "{criterion-number}-{criterion-name}.gif"
-
-# 8. MOVE GIF to evidence folder (Bash)
-mv ~/Downloads/{criterion-number}-{criterion-name}.gif {school}-evidence/{criterion-folder}/
-
-# 9. DOWNLOAD any linked documents (Bash)
-curl -L -o "{school}-evidence/{criterion-folder}/{document}.pdf" "{document-url}"
-
-# 10. VERIFY files exist (Bash)
-ls -la "{school}-evidence/{criterion-folder}/"
-```
-
-**IMPORTANT**: Do NOT proceed to the next criterion until you have:
-- Exported and moved at least one GIF to the criterion's evidence subfolder
-- Verified the file exists with `ls -la`
-- Downloaded any linked policy documents
+**Broken link indicators to watch for:**
+- HTTP status codes in page content: 404, 403, 500, 502, 503
+- Text phrases: "page not found", "sorry", "not available", "broken", "doesn't exist", "moved", "deleted", "expired", "no longer"
+- Generic error page templates from the web host or CMS
+- Pages that unexpectedly redirect to the homepage
 
 ## Validation
 
@@ -502,9 +460,8 @@ done
 
 ### 2. Verify Minimum Evidence Per Criterion
 Each applicable criterion subfolder MUST contain at least ONE file:
-- Screenshot (.png) showing the relevant webpage content
+- Static GIF screenshot (.gif) showing the relevant webpage content
 - OR Downloaded document (.pdf/.doc) for policy files
-- OR GIF recording (.gif) showing navigation through evidence
 
 ### 3. Validation Checklist
 
@@ -514,6 +471,7 @@ Each applicable criterion subfolder MUST contain at least ONE file:
 - [ ] Total file count matches Evidence Index in report
 - [ ] No empty subfolders for applicable criteria
 - [ ] File sizes are reasonable (screenshots > 10KB, PDFs > 1KB)
+- [ ] All GIFs are static (single frame) - no animated recordings
 
 **Report Content:**
 - [ ] All 20 criteria have been assessed (applicable or marked N/A)
@@ -521,6 +479,7 @@ Each applicable criterion subfolder MUST contain at least ONE file:
 - [ ] All linked files can be opened/viewed
 - [ ] Gaps are clearly documented for "Not Met" or "Partially Met" items
 - [ ] Recommendations are actionable and prioritised
+- [ ] Broken Links section is present (even if no broken links found)
 
 **Compliance Summary:**
 - [ ] Applicable criteria shown in main table
@@ -531,6 +490,6 @@ Each applicable criterion subfolder MUST contain at least ONE file:
 
 If any evidence files are missing after validation:
 1. Re-navigate to the relevant page
-2. Capture and SAVE the screenshot explicitly
+2. Capture a static GIF screenshot
 3. Verify the file was created
 4. Update the report if needed
