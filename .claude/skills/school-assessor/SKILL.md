@@ -75,11 +75,46 @@ For each of the 20 criteria in assessment-approach.md:
    - Look for the required information as specified in "What to Verify"
    - Check common locations: Policies page, Key Information, About Us, dedicated topic pages
 
+   **CRITICAL: Follow actual navigation links — do NOT guess URLs.**
+
+   School websites use inconsistent URL structures. Always:
+   - Use `read_page` with `filter: interactive` to discover actual `href` values
+   - Hover over menu items to reveal dropdown submenus, then read the page again
+   - Click links using `ref` IDs or the exact URLs from the page
+   - Never construct URLs by guessing patterns (e.g., `/key-information/admissions/` may actually be `/Admissions`)
+
+   Example workflow:
+   ```
+   # 1. Get actual navigation links
+   mcp__claude-in-chrome__read_page: tabId={tabId}, filter=interactive
+
+   # 2. Hover to reveal dropdowns
+   mcp__claude-in-chrome__computer: action=hover, coordinate=[x,y], tabId={tabId}
+
+   # 3. Read again to get dropdown links
+   mcp__claude-in-chrome__read_page: tabId={tabId}, filter=interactive
+
+   # 4. Click using the actual ref or href
+   mcp__claude-in-chrome__computer: action=left_click, ref=ref_19, tabId={tabId}
+   ```
+
 3. **CAPTURE AND SAVE EVIDENCE (Required for each applicable criterion)**
 
    **This step is MANDATORY - do not skip it!**
 
-   Use the Chrome MCP tools to capture **static screenshot GIFs** as evidence. Only capture pages that directly show evidence for the criterion being assessed - do NOT capture intermediate navigation pages, menus, or pages you pass through to reach the evidence.
+   Use the Chrome MCP tools to capture **static screenshot GIFs** as evidence. Screenshots taken with the `computer` tool are displayed but NOT automatically saved to files — you MUST use the GIF creator to save visual evidence.
+
+   **What to capture:**
+   - The specific page or section containing evidence for the criterion
+   - Downloaded policy documents (PDF/DOC/DOCX)
+   - External link destination pages (e.g., Ofsted report page)
+   - Error pages encountered (for broken link reporting)
+
+   **What NOT to capture:**
+   - Navigation menus or dropdowns used to find pages
+   - Intermediate pages you click through to reach evidence
+   - The homepage (unless it contains specific evidence)
+   - Pages unrelated to the current criterion
 
    **Per-criterion evidence capture workflow:**
 
@@ -128,21 +163,105 @@ For each of the 20 criteria in assessment-approach.md:
       ls -la "{school}-evidence/{criterion-folder}/"
       ```
 
+   **Troubleshooting: 0 frames captured.** The Chrome MCP GIF creator occasionally captures 0 frames. If this happens, clear (`gif_creator: action=clear`) and retry steps c–f. If it persists, start recording *before* navigation (swap steps a and c) as a fallback — this produces a 2–3 frame GIF instead of a single-frame static image, which is acceptable.
+
    **If a page requires scrolling**, capture multiple static GIFs of different sections rather than one animated recording. Each GIF should show a specific piece of evidence with a descriptive filename (e.g., `17-ks2-results.gif`, `17-eyfs-results.gif`).
+
+   **For external links (e.g., Ofsted, LA website):** capture a static GIF of the external destination page and note in findings that compliance is via external link.
+
+   Use descriptive filenames that indicate what the image shows (e.g., `06-senco-details.gif`, not `06-screenshot-3.gif`).
 
    **Do NOT proceed to step 4 until evidence files are confirmed saved!**
 
-4. **Assess compliance**
-   - **Met**: All required items are published and accessible
-   - **Partially Met**: Some required items are present but gaps exist
-   - **Not Met**: Required items are missing or inaccessible
+   **Example evidence folder structure:**
+   ```
+   beatrix-potter-evidence/
+   ├── 01-admission-arrangements/
+   │   ├── 01-admissions-page.gif
+   │   ├── 01-oversubscription-criteria.gif
+   │   └── Beatrix-Potter-Admissions-Policy.pdf
+   ├── 02-behaviour-policy/
+   │   ├── 02-behaviour-policy-link.gif
+   │   └── Behaviour-Policy.pdf
+   ├── 06-contact-details/
+   │   ├── 06-footer-contact.gif
+   │   └── 06-senco-details.gif
+   ├── 07-curriculum/
+   │   ├── 07-curriculum-overview.gif
+   │   ├── 07-phonics-scheme.gif
+   │   └── 07-re-withdrawal.gif
+   ├── 11-ofsted-reports/
+   │   └── 11-ofsted-report-page.gif
+   ├── broken-links/
+   │   ├── broken-pe-sport-premium-404.gif
+   │   └── broken-old-newsletter-link.gif
+   └── ...
+   ```
+
+4. **Assess compliance with detailed analysis**
+
+   **Status Definitions:**
+   - **Met**: All required items are published, accessible, current, and complete
+   - **Partially Met**: Core requirement present but with quality or completeness gaps
+   - **Not Met**: Required items are missing, inaccessible, or severely outdated
    - **N/A**: Criterion does not apply to this school type
 
-5. **Record findings**
+   **For EACH criterion, evaluate these quality dimensions:**
+
+   a) **Document Currency**
+      - Check for dates on policies and documents
+      - Verify documents are from the current or previous academic year
+      - Flag any documents older than 2 years as potentially outdated
+      - Note if review dates are published and when next review is due
+      - For annual publications (e.g., pupil premium, sports premium, results), verify the year matches current/latest data
+
+   b) **Content Completeness**
+      - Cross-reference against ALL sub-requirements in assessment-approach.md
+      - Don't just check if a page exists — verify each specific element is present
+      - For example, "Contact Details" requires: name, address, phone, email, AND SENCO name
+      - For "School Hours", both start AND end times should be stated
+      - For "Uniform", items AND where to purchase should be included
+
+   c) **Accessibility and Findability**
+      - Note how many clicks from homepage to reach the information
+      - Check if navigation labels are clear (e.g., "Policies" vs buried in "About Us")
+      - Verify documents are downloadable (not just viewable)
+      - Note if external links open appropriately
+      - Flag if critical information requires excessive scrolling to find
+
+   d) **Document Format Quality**
+      - Check if policies are in accessible formats (PDF preferred over DOC for viewing)
+      - Note file sizes (very large files may indicate accessibility issues)
+      - Verify documents are not password-protected or corrupted
+      - Check if scanned documents have searchable text (accessibility requirement)
+
+   e) **Information Consistency**
+      - Cross-check key details appear consistently across pages (e.g., school name, contact details)
+      - Verify linked information matches (e.g., SENCO name on Contact page matches SEND page)
+      - Check that staff names in governance match those in other references
+
+   f) **Link Integrity**
+      - Test that document download links work
+      - Verify external links (Ofsted, DfE, LA websites) resolve correctly
+      - Note any links that redirect unexpectedly
+
+   **Partial Compliance Examples:**
+   - Policy exists but is dated 3+ years ago
+   - Contact page has address and phone but missing email
+   - Curriculum page exists but doesn't cover all year groups
+   - Results page has KS2 but missing phonics data
+   - School hours shows start time but not finish time
+   - Uniform list provided but no information on where to purchase
+   - Governors listed but terms of office/appointment dates missing
+   - Pupil premium statement exists but is for previous academic year
+
+5. **Record findings with specificity**
    - Document what evidence was found and where
-   - Note any gaps or missing items
+   - Note any gaps or missing items with specific details
    - Reference the ACTUAL evidence files that were saved in step 3
    - Include relative paths to evidence files in the report
+   - For "Partially Met" items, specify EXACTLY what is missing or inadequate
+   - For "Met" items, still note any minor improvements that could be made
 
 ### 3. Broken Link Detection
 
@@ -164,121 +283,6 @@ While navigating the website for any reason, watch for pages that indicate a bro
 
 **These must be reported regardless of whether they relate to any assessment criterion.** They are reported in a dedicated section of the compliance report (see Output Format below).
 
-### 4. Evidence Capture Guidelines
-
-**CRITICAL: Use Chrome MCP Tools to Save Evidence Files**
-
-The Chrome MCP provides tools for capturing and saving evidence. Screenshots taken with the `computer` tool are displayed but NOT automatically saved to files. You MUST use the GIF creator to save visual evidence as **static (single-frame) GIFs**.
-
-**What to Capture (DO):**
-- The specific page or section that contains evidence for the criterion
-- Downloaded policy documents (PDF/DOC/DOCX)
-- External link destination pages (e.g., Ofsted report page)
-- Error pages encountered (for broken link reporting)
-
-**What NOT to Capture:**
-- Navigation menus or dropdowns used to find pages
-- Intermediate pages you click through to reach evidence
-- The homepage (unless it contains specific evidence)
-- Pages unrelated to the current criterion
-
-**Static GIF Capture Method:**
-
-For each evidence screenshot, use this compact workflow:
-
-```
-# 1. Navigate to evidence page
-mcp__claude-in-chrome__navigate:
-  url: "{evidence-page-url}"
-  tabId: {tabId}
-
-# 2. Wait for load
-mcp__claude-in-chrome__computer:
-  action: wait
-  duration: 2
-  tabId: {tabId}
-
-# 3. Start recording
-mcp__claude-in-chrome__gif_creator:
-  action: start_recording
-  tabId: {tabId}
-
-# 4. Take ONE screenshot
-mcp__claude-in-chrome__computer:
-  action: screenshot
-  tabId: {tabId}
-
-# 5. Stop recording immediately
-mcp__claude-in-chrome__gif_creator:
-  action: stop_recording
-  tabId: {tabId}
-
-# 6. Export static GIF
-mcp__claude-in-chrome__gif_creator:
-  action: export
-  tabId: {tabId}
-  download: true
-  filename: "{criterion-number}-{descriptive-name}.gif"
-
-# 7. Move to evidence folder
-mv ~/Downloads/{criterion-number}-{descriptive-name}.gif {school}-evidence/{criterion-folder}/
-```
-
-**For pages with long content requiring multiple captures:**
-
-Scroll to each relevant section separately and capture individual static GIFs with descriptive names:
-- `07-curriculum-overview.gif` (top of curriculum page)
-- `07-phonics-scheme.gif` (scrolled to phonics section)
-- `07-re-withdrawal.gif` (scrolled to RE section)
-
-**Downloading Policy Documents:**
-
-For linked PDF/DOC files, extract the URL and download:
-
-```bash
-curl -L -o "{school}-evidence/{criterion-folder}/{document-name}.pdf" "{document-url}"
-```
-
-**Verification After Each Criterion:**
-```bash
-ls -la "{school}-evidence/{criterion-folder}/"
-# Must show at least one file before proceeding
-```
-
-**Screenshot best practices:**
-- Only capture pages that directly show evidence for the criterion
-- Use descriptive filenames that indicate what the image shows (e.g., `06-senco-details.gif`, not `06-screenshot-3.gif`)
-- VERIFY each file exists before moving to the next criterion
-
-**For external links (e.g., Ofsted, LA website):**
-- Capture a static GIF of the external destination page
-- Note in findings that compliance is via external link
-
-**Example evidence folder structure:**
-```
-beatrix-potter-evidence/
-├── 01-admission-arrangements/
-│   ├── 01-admissions-page.gif
-│   ├── 01-oversubscription-criteria.gif
-│   └── Beatrix-Potter-Admissions-Policy.pdf
-├── 02-behaviour-policy/
-│   ├── 02-behaviour-policy-link.gif
-│   └── Behaviour-Policy.pdf
-├── 06-contact-details/
-│   ├── 06-footer-contact.gif
-│   └── 06-senco-details.gif
-├── 07-curriculum/
-│   ├── 07-curriculum-overview.gif
-│   ├── 07-phonics-scheme.gif
-│   └── 07-re-withdrawal.gif
-├── 11-ofsted-reports/
-│   └── 11-ofsted-report-page.gif
-├── broken-links/
-│   ├── broken-pe-sport-premium-404.gif
-│   └── broken-old-newsletter-link.gif
-└── ...
-```
-
 ## Output Format
 
 Generate `{school-name-slug}-compliance-report.md` with this structure:
@@ -294,7 +298,10 @@ Generate `{school-name-slug}-compliance-report.md` with this structure:
 - **Website**: [URL]
 - **Assessment Date**: [Date and time]
 
-This document presents the findings of a website compliance review against the Department for Education (DfE) statutory guidance for maintained schools, as published at https://www.gov.uk/guidance/what-maintained-schools-must-publish-online.
+[The following two paragraphs must be included verbatim]
+This document presents the findings of an automated website compliance review against the Department for Education (DfE) statutory guidance for maintained schools, as published at https://www.gov.uk/guidance/what-maintained-schools-must-publish-online.
+
+**DISCLAIMER** I have created these skills as a layman interpreting the relevant DfE guidance. I am not a lawyer. Please ensure you review the output of the tool, its evidence and come to your own conclusions. As always, AI can make mistakes…
 
 ## School Profile
 
@@ -387,12 +394,23 @@ During the assessment, the following broken or problematic links were identified
 **Evidence**:
 - [Description of what was found]
 - [Location on website]
+- [Number of clicks from homepage]
+
+**Quality Assessment**:
+| Dimension | Finding |
+|-----------|---------|
+| Currency | [e.g., "Policy dated September 2024" or "No date visible"] |
+| Completeness | [e.g., "All required elements present" or "Missing: oversubscription criteria"] |
+| Findability | [e.g., "2 clicks from homepage via Key Information > Admissions"] |
+| Format | [e.g., "PDF, 245KB, accessible"] |
 
 **Evidence Files**:
 - [01-admissions-page.gif](evidence/01-admission-arrangements/01-admissions-page.gif)
 - [Admissions-Policy.pdf](evidence/01-admission-arrangements/Admissions-Policy.pdf)
 
 **Gap**: [Description of any missing items, or "None identified"]
+
+**Observations**: [Any additional notes about quality, suggestions for improvement, or notable good practice]
 
 ---
 
@@ -416,30 +434,7 @@ Total evidence files: [X]
 
 ## Assessment Tips
 
-**Common page locations to check:**
-- Homepage footer (contact details, accessibility statement)
-- "Key Information" or "About Us" sections
-- "Policies" or "Statutory Policies" page
-- "Governance" or "Governors" page
-- "Curriculum" section with subject pages
-- "SEND" or "Special Educational Needs" page
-- "Results" or "Performance" page
-- "Admissions" page
-- Quick links menu
-
-**Common gaps to watch for:**
-- Missing £100k+ salary statement (even if "none", must be stated)
-- Missing paper copies availability statement
-- Weekly hours total not explicitly calculated
-- Outdated documents (check dates on policies)
-- Broken links to external services
-- SENCo contact details missing from mainstream schools
-
-**Broken link indicators to watch for:**
-- HTTP status codes in page content: 404, 403, 500, 502, 503
-- Text phrases: "page not found", "sorry", "not available", "broken", "doesn't exist", "moved", "deleted", "expired", "no longer"
-- Generic error page templates from the web host or CMS
-- Pages that unexpectedly redirect to the homepage
+Broken link indicators are listed in Section 3 "Broken Link Detection" above — refer to that section while navigating.
 
 ## Validation
 
