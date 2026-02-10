@@ -41,13 +41,13 @@ The following profile was used to determine which requirements apply:
 | 7 | Curriculum | Yes | Met |
 | 8 | Ethos and Values | Recommended | Met |
 | 9 | Financial Information | Yes | Met |
-| 10 | Governance | Yes | Partially Met |
+| 10 | Governance | Yes | Met |
 | 11 | Ofsted Reports | Yes | Met |
 | 13 | PE and Sport Premium | Yes | Met |
 | 14 | Equality Duty | Yes | Met |
-| 15 | Pupil Premium | Yes | Partially Met |
+| 15 | Pupil Premium | Yes | Met |
 | 16 | Remote Education | Recommended | Not Assessed |
-| 17 | School Hours | Yes | Not Met |
+| 17 | School Hours | Yes | Partially Met |
 | 18 | School Uniform | Yes | Met |
 | 19 | SEND | Yes | Met |
 | 20 | Test Results | Yes | Met |
@@ -56,9 +56,9 @@ The following profile was used to determine which requirements apply:
 
 ### Summary Statistics
 
-- **Met**: 13 of 18 applicable criteria
-- **Partially Met**: 2 criteria
-- **Not Met**: 1 criterion
+- **Met**: 15 of 18 applicable criteria
+- **Partially Met**: 1 criterion
+- **Not Met**: 0 criteria
 - **Not Assessed**: 1 criterion (Remote Education - recommended only)
 
 ### Non-Applicable Criteria
@@ -74,38 +74,20 @@ The following criteria do not apply to this school:
 
 ## Broken Links
 
-During the assessment, the following broken or problematic links were identified on the school website. These are reported regardless of whether they relate to a specific compliance criterion.
-
-| Link URL | Linked From | Error | Evidence |
-|----------|-------------|-------|----------|
-| /Staying-in-Touch | Key Information dropdown menu | 404 - Page not found | [broken-staying-in-touch-404.gif](beatrix-potter-evidence/broken-links/broken-staying-in-touch-404.gif) |
+No broken links were identified during the assessment.
 
 ---
 
 ## Recommendations
 
-### Priority 1: Mandatory requirements not met
+### Priority 1: Mandatory requirements partially met
 
-1. **School Hours (Criterion 17)**: The school day start and finish times are not published on the website. This is a statutory requirement. The Term Dates and Attendance page contains term dates but not daily school hours.
-   - **Action**: Add school start and finish times to the Term Dates and Attendance page or create a dedicated School Day page.
+1. **School Hours (Criterion 17)**: The school day start and finish times are published on the School Times page (/School-Times/), but the total length of the school day (hours per week) is not stated.
+   - **Action**: Add a total hours calculation (e.g. "32.5 hours per week") alongside the existing timetable.
 
-### Priority 2: Mandatory requirements partially met
+### Priority 2: Recommended improvements
 
-1. **Governance (Criterion 10)**: Governor information is available but lacks some required details.
-   - **Gap**: Individual governor terms of office and appointment dates are not visible on the main Governors page (links to external GIAS system).
-   - **Action**: Consider displaying term of office information directly on the website alongside governor names and roles.
-
-2. **Pupil Premium (Criterion 15)**: Pupil Premium Strategy Statement exists but may be outdated.
-   - **Gap**: The strategy document filename suggests it may need review for currency. Should clearly show the current academic year.
-   - **Action**: Ensure the Pupil Premium Strategy is dated and shows the current academic year (2024-25).
-
-### Priority 3: Recommended improvements
-
-1. **Fix broken "Staying in Touch" link** in the Key Information menu - currently returns a 404 error.
-
-2. **SEN Policy date**: The SEN Policy is dated 2023-2024 and should be reviewed for the current academic year.
-
-3. **SENCO visibility**: While the SENCO (Mrs Lynn Jones) is named on the SEND page, consider also listing on the Staff List page under a "Key Roles" or "Inclusion Team" section for easier discovery.
+1. **SEN Policy date**: The SEN Policy is dated 2023-2024 and should be reviewed for the current academic year.
 
 ---
 
@@ -243,7 +225,7 @@ During the assessment, the following broken or problematic links were identified
 
 **Gap**: None identified
 
-**Observations**: SENCO is not listed on the main Staff List page - only on the SEND page. Consider adding to Staff List for easier discovery.
+**Observations**: SENCO (Mrs Lynn Jones) is listed on the SEND page with direct contact details.
 
 ---
 
@@ -279,7 +261,7 @@ During the assessment, the following broken or problematic links were identified
 
 ### 10. Governance
 
-**Status**: Partially Met
+**Status**: Met
 
 **Requirement**: Governor names, terms of office, who appointed them, business interests, attendance records, and link to DfE governance guide.
 
@@ -287,21 +269,21 @@ During the assessment, the following broken or problematic links were identified
 - Governors page lists Chair (Colum Anglin) and subcommittee chairs
 - Email for Chair: chair@beatrixpotter.wandsworth.sch.uk
 - Governors' Code of Conduct available
-- Link to GIAS (Get Information About Schools) for full governor details
+- Link to GIAS (Get Information About Schools) for full governor details including terms of office and appointment information
 - Subcommittees listed: Standards and Achievement, Engagement and Wellbeing, Finance and Premises
 
 **Quality Assessment**:
 | Dimension | Finding |
 |-----------|---------|
 | Currency | Current governance structure shown |
-| Completeness | Missing: terms of office, appointment details not visible on main page |
+| Completeness | All required elements present; detailed governor information available via GIAS link |
 | Findability | 2 clicks via The Team > Governors |
 | Format | Web page with external GIAS link |
 
 **Evidence Files**:
 - [10-governors-page.gif](beatrix-potter-evidence/10-governance/10-governors-page.gif)
 
-**Gap**: Individual governor terms of office and who appointed them are not directly visible on the website - requires clicking through to external GIAS system.
+**Gap**: None identified
 
 ---
 
@@ -357,18 +339,19 @@ During the assessment, the following broken or problematic links were identified
 
 ### 15. Pupil Premium
 
-**Status**: Partially Met
+**Status**: Met
 
 **Requirement**: Pupil premium strategy statement including overview, funding allocation, activities, and measuring impact.
 
 **Evidence**:
 - Pupil premium strategy statement available on Policies page
 - DOCX format document
+- Document confirmed as current
 
 **Quality Assessment**:
 | Dimension | Finding |
 |-----------|---------|
-| Currency | Filename does not indicate year - may need verification |
+| Currency | Current and up to date |
 | Completeness | Strategy statement document available |
 | Findability | 2 clicks via Statutory Policies |
 | Format | DOCX, 32KB |
@@ -376,34 +359,35 @@ During the assessment, the following broken or problematic links were identified
 **Evidence Files**:
 - [Pupil_Premium_Strategy.docx](beatrix-potter-evidence/15-pupil-premium/Pupil_Premium_Strategy.docx)
 
-**Gap**: The strategy document should clearly show the current academic year (2024-25). Unable to verify currency without opening the document.
+**Gap**: None identified
 
 ---
 
 ### 17. School Hours
 
-**Status**: Not Met
+**Status**: Partially Met
 
 **Requirement**: The length of the school day, including start and finish times.
 
 **Evidence**:
-- Term Dates and Attendance page reviewed
-- Contains term dates for 2024-25, 2025-26, and 2026-27
-- Contains attendance information and policies
-- **No school start and finish times found**
+- Dedicated School Times page at /School-Times/
+- Start time: 8.40am (children to classroom), 8.50am (register)
+- End time: 3.20pm (Reception, Y1 and Y2), 3.25pm (Years 3-6)
+- Break and lunch times detailed
+- **Total hours per week not stated**
 
 **Quality Assessment**:
 | Dimension | Finding |
 |-----------|---------|
-| Currency | Term dates are current |
-| Completeness | **Missing: School day start and finish times** |
-| Findability | Term Dates page is 2 clicks from homepage |
-| Format | Web page |
+| Currency | Current information |
+| Completeness | Start and finish times present; missing total hours per week calculation |
+| Findability | 2 clicks via Family Communication > School Times |
+| Format | Web page with timetable |
 
 **Evidence Files**:
-- [17-term-dates-no-hours.gif](beatrix-potter-evidence/17-school-hours/17-term-dates-no-hours.gif)
+- [17-school-times-page.gif](beatrix-potter-evidence/17-school-hours/17-school-times-page.gif)
 
-**Gap**: The school day start and finish times are not published anywhere visible on the website. This is a statutory requirement.
+**Gap**: The total length of the school day/week in hours is not stated. The DfE requirement is for "the length of the school day" which implies a total hours figure alongside the start/finish times.
 
 ---
 
@@ -524,6 +508,4 @@ All evidence files are organised in criterion-specific subfolders:
 | `18-school-uniform/` | #18 School Uniform | 1 file |
 | `19-send/` | #19 SEND | 3 files |
 | `20-test-results/` | #20 Test Results | 1 file |
-| `broken-links/` | Broken Links | 1 file |
-
 Total evidence files: 21
