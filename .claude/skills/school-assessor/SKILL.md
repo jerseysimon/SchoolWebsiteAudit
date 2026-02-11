@@ -98,6 +98,20 @@ For each of the 20 criteria in assessment-approach.md:
    mcp__claude-in-chrome__computer: action=left_click, ref=ref_19, tabId={tabId}
    ```
 
+   **FALLBACK: Google `site:` search for undiscoverable pages**
+
+   If the required information for a criterion cannot be found through menu navigation, you MUST perform a Google search before concluding the information is missing. School websites often have pages that exist but are not linked from the main navigation.
+
+   Steps:
+   1. Navigate to Google and search: `site:{school-domain} {criterion keywords}`
+      - Example: `site:beatrixpotterschool.com school times`
+      - Example: `site:beatrixpotterschool.com pupil premium`
+   2. Review the search results for relevant pages on the school's domain
+   3. If a relevant page is found, navigate to it and continue the assessment as normal
+   4. Only mark information as "not found" after BOTH menu navigation AND site search have failed
+
+   This is particularly important for pages that may be under unexpected menu sections or only accessible via direct URL.
+
 3. **CAPTURE AND SAVE EVIDENCE (Required for each applicable criterion)**
 
    **This step is MANDATORY - do not skip it!**
@@ -198,15 +212,58 @@ For each of the 20 criteria in assessment-approach.md:
    └── ...
    ```
 
-4. **Assess compliance with detailed analysis**
+4. **Extract sub-requirement checklist from assessment-approach.md**
 
-   **Status Definitions:**
-   - **Met**: All required items are published, accessible, current, and complete
-   - **Partially Met**: Core requirement present but with quality or completeness gaps
-   - **Not Met**: Required items are missing, inaccessible, or severely outdated
+   **This step is MANDATORY before assessing compliance.**
+
+   For each criterion, read the full "What to Verify" section from assessment-approach.md and extract EVERY bullet point and sub-bullet as an individual verification item. These form the checklist that drives the assessment — not a general impression of whether the criterion is "roughly covered".
+
+   **How to build the checklist:**
+   - Read the "What to Verify" section for the current criterion in assessment-approach.md
+   - Each bullet point becomes a separate checklist item
+   - Each sub-bullet under a bullet becomes its own checklist item
+   - Conditional items (e.g., "if governing body manages admissions") should be included with their condition noted
+   - Items marked as RECOMMENDED in assessment-approach.md should be included but flagged as recommended
+
+   **Example — Criterion 13 (PE and Sport Premium) produces this checklist:**
+   ```
+   - [ ] Amount of premium funding received
+   - [ ] Full breakdown of spending
+   - [ ] Impact on pupil participation and attainment
+   - [ ] Sustainability plan for improvements
+   - [ ] Year 6 swimming: percentage swimming 25 metres competently
+   - [ ] Year 6 swimming: percentage using a range of strokes
+   - [ ] Year 6 swimming: percentage performing safe self-rescue
+   ```
+
+   **Example — Criterion 17 (School Hours) produces this checklist:**
+   ```
+   - [ ] Compulsory school day start time
+   - [ ] Compulsory school day end time
+   - [ ] Weekly hours total (including breaks, excluding after-school activities)
+   ```
+
+   Do NOT summarise or collapse sub-bullets. Every individual point must be a separate checklist item.
+
+5. **Verify each checklist item and assess compliance**
+
+   Go through the checklist item by item. For each one:
+   - Search the relevant page(s) for the specific information
+   - Mark as found (with location) or not found
+   - If not found on the current page, check other pages where it might appear (including using the Google site: search fallback)
+
+   **Determine status from the checklist results:**
+
+   - **Met**: ALL mandatory checklist items are found, accessible, current, and complete
+   - **Partially Met**: Some mandatory checklist items are present but others are missing, OR items exist but have quality/currency gaps
+   - **Not Met**: No mandatory checklist items are found, OR the information is entirely inaccessible
    - **N/A**: Criterion does not apply to this school type
 
-   **For EACH criterion, evaluate these quality dimensions:**
+   **A criterion can only be "Met" if every mandatory checklist item passes.** A single missing mandatory item means "Partially Met" at best.
+
+6. **Evaluate quality dimensions**
+
+   In addition to the checklist verification, evaluate these quality dimensions for each criterion:
 
    a) **Document Currency**
       - Check for dates on policies and documents
@@ -215,52 +272,33 @@ For each of the 20 criteria in assessment-approach.md:
       - Note if review dates are published and when next review is due
       - For annual publications (e.g., pupil premium, sports premium, results), verify the year matches current/latest data
 
-   b) **Content Completeness**
-      - Cross-reference against ALL sub-requirements in assessment-approach.md
-      - Don't just check if a page exists — verify each specific element is present
-      - For example, "Contact Details" requires: name, address, phone, email, AND SENCO name
-      - For "School Hours", both start AND end times should be stated
-      - For "Uniform", items AND where to purchase should be included
-
-   c) **Accessibility and Findability**
+   b) **Accessibility and Findability**
       - Note how many clicks from homepage to reach the information
       - Check if navigation labels are clear (e.g., "Policies" vs buried in "About Us")
       - Verify documents are downloadable (not just viewable)
       - Note if external links open appropriately
-      - Flag if critical information requires excessive scrolling to find
 
-   d) **Document Format Quality**
+   c) **Document Format Quality**
       - Check if policies are in accessible formats (PDF preferred over DOC for viewing)
       - Note file sizes (very large files may indicate accessibility issues)
       - Verify documents are not password-protected or corrupted
-      - Check if scanned documents have searchable text (accessibility requirement)
 
-   e) **Information Consistency**
+   d) **Information Consistency**
       - Cross-check key details appear consistently across pages (e.g., school name, contact details)
       - Verify linked information matches (e.g., SENCO name on Contact page matches SEND page)
-      - Check that staff names in governance match those in other references
 
-   f) **Link Integrity**
+   e) **Link Integrity**
       - Test that document download links work
       - Verify external links (Ofsted, DfE, LA websites) resolve correctly
       - Note any links that redirect unexpectedly
 
-   **Partial Compliance Examples:**
-   - Policy exists but is dated 3+ years ago
-   - Contact page has address and phone but missing email
-   - Curriculum page exists but doesn't cover all year groups
-   - Results page has KS2 but missing phonics data
-   - School hours shows start time but not finish time
-   - Uniform list provided but no information on where to purchase
-   - Governors listed but terms of office/appointment dates missing
-   - Pupil premium statement exists but is for previous academic year
-
-5. **Record findings with specificity**
+7. **Record findings with specificity**
    - Document what evidence was found and where
    - Note any gaps or missing items with specific details
    - Reference the ACTUAL evidence files that were saved in step 3
    - Include relative paths to evidence files in the report
-   - For "Partially Met" items, specify EXACTLY what is missing or inadequate
+   - Include the full Verification Checklist in the detailed findings (see Output Format)
+   - For "Partially Met" items, the checklist will show EXACTLY which items are missing
    - For "Met" items, still note any minor improvements that could be made
 
 ### 3. Broken Link Detection
@@ -391,16 +429,23 @@ During the assessment, the following broken or problematic links were identified
 
 **Requirement**: [Brief summary of what must be published]
 
+**Verification Checklist** (from assessment-approach.md "What to Verify"):
+| Sub-requirement | Found | Location |
+|----------------|:-----:|----------|
+| Admission arrangements explaining how applications are considered | Yes/No | [Page or document where found, or "-"] |
+| Published admission numbers (PAN) | Yes/No | [Location] |
+| Application process details | Yes/No | [Location] |
+| Place allocation methods | Yes/No | [Location] |
+| [... every bullet and sub-bullet from assessment-approach.md ...] | | |
+
 **Evidence**:
 - [Description of what was found]
 - [Location on website]
-- [Number of clicks from homepage]
 
 **Quality Assessment**:
 | Dimension | Finding |
 |-----------|---------|
 | Currency | [e.g., "Policy dated September 2024" or "No date visible"] |
-| Completeness | [e.g., "All required elements present" or "Missing: oversubscription criteria"] |
 | Findability | [e.g., "2 clicks from homepage via Key Information > Admissions"] |
 | Format | [e.g., "PDF, 245KB, accessible"] |
 
@@ -408,7 +453,7 @@ During the assessment, the following broken or problematic links were identified
 - [01-admissions-page.gif](evidence/01-admission-arrangements/01-admissions-page.gif)
 - [Admissions-Policy.pdf](evidence/01-admission-arrangements/Admissions-Policy.pdf)
 
-**Gap**: [Description of any missing items, or "None identified"]
+**Gap**: [Derived from checklist — list any "No" items, or "None identified"]
 
 **Observations**: [Any additional notes about quality, suggestions for improvement, or notable good practice]
 
